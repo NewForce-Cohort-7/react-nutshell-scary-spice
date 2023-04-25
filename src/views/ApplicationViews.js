@@ -1,5 +1,6 @@
-import { Outlet, Route, Routes } from "react-router-dom"
-import NavBar from "./NavBar"
+import { Outlet, Route, Routes } from "react-router-dom";
+import { Login } from "../auth/Login";
+import NavBar from "../nav/NavBar";
 
 export const ApplicationViews = () => {
   // Retrieving the user object from local storage
