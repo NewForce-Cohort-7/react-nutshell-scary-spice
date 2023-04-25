@@ -1,12 +1,12 @@
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavItem from 'react-bootstrap/NavItem';
-import { Link, useNavigate } from 'react-router-dom';
-import "./NavBar.css";
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import NavItem from 'react-bootstrap/NavItem'
+import { useNavigate } from 'react-router-dom'
+import "./NavBar.css"
 
 const NavBar = () => {
-    const navigate = useNavigate();
-    const isLoggedIn = localStorage.getItem("nutshell_user");
+    const navigate = useNavigate()
+    const isLoggedIn = localStorage.getItem("nutshell_user")
 
     return (
         <Navbar expand="lg" bg="navbar-background" variant="dark" fixed="top">
@@ -20,15 +20,15 @@ const NavBar = () => {
                     {isLoggedIn &&
                         <NavItem className="navbar__item navbar__logout">
                             <Nav.Link bsPrefix="nav-link-custom" to="/" onClick={() => {
-                                localStorage.removeItem("nutshell_user");
-                                navigate("/", { replace: true });
+                                localStorage.removeItem("nutshell_user")
+                                navigate("/", { replace: true })
                             }}>Logout</Nav.Link>
                         </NavItem>
                     }
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
-    );
+    )
 }
 
-export default NavBar;
+export default NavBar
