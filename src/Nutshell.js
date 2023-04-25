@@ -1,18 +1,26 @@
 import './Nutshell.css';
-import Button from 'react-bootstrap/Button';
 import NavBar from './nav/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Routes } from "react-router-dom";
+import { ApplicationViews } from "./views/ApplicationViews";
+import { Login } from './auth/Login';
+import { Register } from "./auth/Register";
+import { Authorized } from './views/Authorized';
 
-function Nutshell() {
-  return (
-    <div className="Dashboard">
-      <NavBar />
-      <header className="App-header">
-        <h1 className="placeholderTitle">Welcome to Nutshell</h1>
-        <Button>Test</Button>
-      </header>
-    </div>
-  )
+const Nutshell= () => {
+  return <Routes>
+		<Route path="/login" element={<Login />} />
+		<Route path="/register" element={<Register />} />
+
+		<Route path="*" element={
+			<Authorized>
+				<>
+					<NavBar />
+					<ApplicationViews />
+				</>
+			</Authorized>
+
+		} />
+	</Routes>
 }
-
 export default Nutshell
