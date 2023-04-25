@@ -1,5 +1,5 @@
 import { Outlet, Route, Routes } from "react-router-dom"
-import NavBar from "./NavBar"
+import NavBar from "./NavBar."
 
 export const ApplicationViews = () => {
   // Retrieving the user object from local storage
