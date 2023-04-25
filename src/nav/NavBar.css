@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
 
+/* navbar background color */
 .bg-navbar-background {
     background: #019587;
 }
 
+/* navbar logo */
 .navbar-brand-custom {
     font-family: 'Lobster', cursive;
     font-size: 48px;
@@ -17,6 +19,7 @@
     color: #fff;
 }
 
+/* navbar links */
 .nav-link-custom {
     font-family: 'Source Sans Pro', Arial, sans-serif;
     color: #fff;
