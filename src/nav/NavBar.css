@@ -13,6 +13,10 @@
     color: #fff; 
 }
 
+.navbar-brand-custom:hover {
+    color: #fff;
+}
+
 .nav-link-custom {
     font-family: 'Source Sans Pro', Arial, sans-serif;
     color: #fff;
