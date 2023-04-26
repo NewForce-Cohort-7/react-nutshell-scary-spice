@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState, useRef } from "react"
 import { Button, Form } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -6,21 +6,24 @@ const AddArticle = ({ handleSaveArticle }) => {
     const [title, setTitle] = useState("")
     const [synopsis, setSynopsis] = useState("")
     const [url, setUrl] = useState("")
+    const [tags, setTags] = useState("")
+    const formRef = useRef() // useRef is a hook that allows us to reference a DOM element
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        handleSaveArticle({ title, synopsis, url })
-        
-        // Reset the form fields by clearing the state variables
-        setTitle("")
-        setSynopsis("")
-        setUrl("")
+        handleSaveArticle({ title, synopsis, url, tags }) 
+
+        // clear the form
+        if (formRef.current) { 
+            formRef.current.reset() // this resets the form
+        }    
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group>
-                <Form.Label>Article Title:</Form.Label>
+        <Form ref={formRef} onSubmit={handleSubmit} className="add-article-form">
+            <Form.Group className="article-form-group">
+                <Form.Label className="article-form-label">Article Title:</Form.Label>
                 <Form.Control
                     type="text"
                     required
@@ -28,8 +31,8 @@ const AddArticle = ({ handleSaveArticle }) => {
                     placeholder="Title"
                 />
             </Form.Group>
-            <Form.Group>
-                <Form.Label>Article URL:</Form.Label>
+            <Form.Group className="article-form-group">
+                <Form.Label className="article-form-label">Article URL:</Form.Label>
                 <Form.Control
                     type="text"
                     required
@@ -37,8 +40,8 @@ const AddArticle = ({ handleSaveArticle }) => {
                     placeholder="URL"
                 />
             </Form.Group>
-            <Form.Group>
-                <Form.Label>Article Synopsis:</Form.Label>
+            <Form.Group className="article-form-group">
+                <Form.Label className="article-form-label">Article Synopsis:</Form.Label>
                 <Form.Control
                     as="textarea"
                     required
@@ -47,8 +50,19 @@ const AddArticle = ({ handleSaveArticle }) => {
                     style={{ height: '100px' }}
                 />
             </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
+            <Form.Group className="article-form-group">
+                    <Form.Label className="article-form-label">Tags:</Form.Label>
+                    <Form.Control
+                        type="text"
+                        onChange={(event) => setTags(event.target.value)}
+                        placeholder="Enter comma-separated tags"
+                    />
+                </Form.Group>
+            <Button 
+            variant="primary" 
+            type="submit"
+            bsPrefix="submit-article-button">
+                Submit Article
             </Button>
         </Form>
     )

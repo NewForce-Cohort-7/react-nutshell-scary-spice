@@ -6,7 +6,7 @@ import { ApplicationViews } from "./views/ApplicationViews"
 import { Login } from './auth/Login'
 import { Register } from "./auth/Register"
 import { Authorized } from './views/Authorized'
-import Articles from './articles/Articles'
+
 
 const Nutshell= () => {
   return <Router>
@@ -19,7 +19,6 @@ const Nutshell= () => {
           <>
             <NavBar />
               <div className="content-container">
-                <Articles />
                 <ApplicationViews /> 
               </div>
           </>

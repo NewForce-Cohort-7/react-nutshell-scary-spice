@@ -1,6 +1,7 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { Login } from "../auth/Login"
-import NavBar from "../nav/NavBar"
+import Articles from "../articles/Articles"
+
 
 export const ApplicationViews = () => {
   // Retrieving the user object from local storage
@@ -14,7 +15,7 @@ export const ApplicationViews = () => {
           path="/"
           element={
             <>
-              <NavBar />
+              <Articles />
               <Outlet />
             </>
           }
