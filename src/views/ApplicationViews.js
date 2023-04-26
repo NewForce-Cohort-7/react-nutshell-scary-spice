@@ -2,6 +2,7 @@ import { Outlet, Route, Routes } from "react-router-dom"
 import { Login } from "../auth/Login"
 import { EventList } from "../Events/EventList"
 import { EventForm } from "../Events/EventForm"
+import Articles from "../articles/Articles"
 
 
 export const ApplicationViews = () => {
@@ -16,11 +17,12 @@ export const ApplicationViews = () => {
           path="/"
           element={
             <>
-              
-              <Outlet />
+
              <EventList/>
              <EventForm/>
-       
+             <Articles />
+             <Outlet />
+             
             </>
           }
         />
