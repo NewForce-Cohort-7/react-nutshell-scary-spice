@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
+import { Container, Row, Col } from "react-bootstrap"
+import 'bootstrap/dist/css/bootstrap.min.css'
 import "./Login.css"
 
 export const Login = () => {
@@ -28,13 +30,16 @@ export const Login = () => {
     }
 
     return (
-        <main className="container--login">
-            <section>
-                <form className="form--login" onSubmit={handleLogin}>
+        <div className="login-page">
+        <div className="centered-container">
+        <Container>
+            <Row>
+                <Col xs={10} sm={6} lg={4} md={8} className="login-container mx-auto">
+                <form onSubmit={handleLogin}>
                     <h1>Nutshell</h1>
-                    <h2>Please sign in</h2>
+                    <h2 className="please">Please sign in</h2>
                     <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
+                        <label htmlFor="inputEmail" className="sansSerif"> Email address </label>
                         <input type="email"
                             value={email}
                             onChange={evt => set(evt.target.value)}
@@ -43,15 +48,18 @@ export const Login = () => {
                             required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <button type="submit" className="sign-in-button">
                             Sign in
                         </button>
                     </fieldset>
                 </form>
+                <section className="link--register">
+                <Link to="/register" className="registration-link sansSerif">Not a member yet?</Link>
             </section>
-            <section className="link--register">
-                <Link to="/register">Not a member yet?</Link>
-            </section>
-        </main>
+                </Col>
+            </Row>
+            </Container>
+            </div>
+            </div>
     )
 }

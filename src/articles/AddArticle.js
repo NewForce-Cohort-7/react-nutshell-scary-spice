@@ -1,5 +1,5 @@
 import { useState, useRef } from "react"
-import { Button, Form } from "react-bootstrap"
+import { Button, Form, CloseButton } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const AddArticle = ({ handleSaveArticle, toggleAddArticleForm }) => {
@@ -22,6 +22,7 @@ const AddArticle = ({ handleSaveArticle, toggleAddArticleForm }) => {
 
     return (
         <Form ref={formRef} onSubmit={handleSubmit} className="add-article-form">
+            <div className="add-article-close-button"><CloseButton type="button" onClick={toggleAddArticleForm}></CloseButton></div>
             <Form.Group className="article-form-group">
                 <Form.Label className="article-form-label">Article Title:</Form.Label>
                 <Form.Control
@@ -63,12 +64,6 @@ const AddArticle = ({ handleSaveArticle, toggleAddArticleForm }) => {
                 type="submit"
                 bsPrefix="submit-article-button">
                 Submit Article
-            </Button>
-            <Button 
-                type="button" 
-                onClick={toggleAddArticleForm}
-                bsPrefix="cancel-article-button">
-                Cancel
             </Button>
         </Form>
     )

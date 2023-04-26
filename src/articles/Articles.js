@@ -135,7 +135,7 @@ const Articles = () => {
   }  
 
   return (
-    <Container>
+    <Container id="articles">
       <Row>
         <Col sm={{ span: 8, offset: 2 }} className="article-container">
           <h1 className="main-article-heading">Articles</h1>
@@ -177,13 +177,6 @@ const Articles = () => {
                >
                  Open
                </Button>
-               <Button
-                 bsPrefix="delete-button"
-                 variant="danger"
-                 onClick={() => handleDeleteArticle(article.id)}
-               >
-                 Delete
-               </Button>
 
                <Button
                   bsPrefix="edit-button"
@@ -192,6 +185,14 @@ const Articles = () => {
                 >
                   Edit
                 </Button>
+
+               <Button
+                 bsPrefix="delete-button"
+                 variant="danger"
+                 onClick={() => handleDeleteArticle(article.id)}
+               >
+                 Delete
+               </Button>
 
              </div>
            </div>

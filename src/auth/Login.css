@@ -1,5 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300#019587;1,400;1,600;1,700&display=swap');
+
 .h1, h1 {
+    font-size: 4rem;
+    font-family: 'Lobster', cursive;
+    color: #019589;
+}
+
+.register-title {
     font-size: 2.5rem;
+    font-family: 'Lobster', cursive;
+    color: #019589;
+}
+
+.please {
+    font-family: 'Source Sans Pro';
+    font-weight: 200;
+}
+
+body {
+    margin: auto;
 }
 
 fieldset {
@@ -25,6 +44,7 @@ fieldset {
 }
 
 .form-control {
+    font-family: 'Source Sans Pro';
     display: block;
     width: 94%;
     height: calc(1.5em + .75rem + 2px);
@@ -41,8 +61,11 @@ fieldset {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.container--login {
+.login-container {
     text-align: center;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 2px -2px #000000;
 }
 
 .form--login {
@@ -58,4 +81,39 @@ fieldset {
 .button--close {
     position: relative;
     bottom: -2rem;
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.sign-in-button {
+    font-family: 'Source Sans Pro';
+    background: #019587;
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    width: 100px;
+}
+
+.sansSerif {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-weight: bold;
+}
+
+.registration-link {
+    color: #019589;
+}
+
+.registration-link:hover {
+    color: #455559;
+}
+
+.login-page {
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(1,149,137,1) 100%);
 }
