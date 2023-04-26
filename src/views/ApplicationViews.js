@@ -3,6 +3,7 @@ import { Login } from "../auth/Login"
 import { ChatForm } from "../chat/ChatForm"
 import { Chat } from "../chat/Chat"
 import { ChatList } from "../chat/ChatList"
+import Articles from "../articles/Articles"
 
 
 export const ApplicationViews = () => {
@@ -20,6 +21,7 @@ export const ApplicationViews = () => {
              <Chat />
              <ChatList />
              <ChatForm />
+              <Articles />
               <Outlet />
             </>
           }>

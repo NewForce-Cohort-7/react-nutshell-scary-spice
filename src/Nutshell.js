@@ -19,10 +19,8 @@ const Nutshell= () => {
           <>
             <NavBar />
               <div className="content-container">
-                  <ApplicationViews /> 
-                  </div>
-                
-              
+                <ApplicationViews /> 
+              </div>
           </>
         </Authorized>
       } />
