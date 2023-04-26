@@ -98,7 +98,7 @@ const Articles = () => {
           <h1 className="main-article-heading">Articles</h1>
           
           {articles.map((article) => (
-           <div className="inner-article">
+           <div className="inner-article" key={article.id}>
            <div className="d-flex justify-content-between align-items-start">
              <div>
                <h3 className="article-title">{article.title}</h3> 
@@ -123,7 +123,7 @@ const Articles = () => {
                  </React.Fragment>
                ))}
          
-               <p class="article-synopsis">{article.synopsis}</p>
+               <p className="article-synopsis">{article.synopsis}</p>
              </div>
          
              <div className="d-flex flex-column align-items-end openDelete">
