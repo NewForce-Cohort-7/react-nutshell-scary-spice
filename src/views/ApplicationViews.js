@@ -1,6 +1,8 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { Login } from "../auth/Login"
-import NavBar from "../nav/NavBar"
+import { TaskList } from "../tasks/TaskList"
+import { TaskForm } from "../tasks/TaskForm"
+
 
 export const ApplicationViews = () => {
   // Retrieving the user object from local storage
@@ -10,15 +12,16 @@ export const ApplicationViews = () => {
   if (nutshellUserObject) {
     return (
       <Routes>
-        <Route
-          path="/"
-          element={
+        <Route path="/" element={
             <>
-              <NavBar />
               <Outlet />
             </>
-          }
-        />
+             
+          }/>
+          <Route path="tasks" element = {<TaskList/>}/>
+          <Route path="task/create" element={ <TaskForm /> } />
+          
+
       </Routes>
     )
   } else {
