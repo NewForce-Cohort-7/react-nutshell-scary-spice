@@ -1,66 +1,74 @@
-import { useEffect, useState, } from "react"
-import { useNavigate } from "react-router-dom"
-
-
+import React, { useState, useEffect } from 'react';
 
 export const TaskList = () => {
-    const [tasks, setTasks] = useState([])
-    const [filteredTasks, setFilteredTasks] = useState([])
+  
+const [tasks, setTasks] = useState([]);
+const [filteredTasks, setFilteredTasks] = useState([]);
 
-
-    const navigate= useNavigate ()
-   
-    const handleCheckedBox = (event) => {
-        useEffect(
-            ()=>{
-        if (complete) {
-          const updatedList = tasks.filter(task=>task.complete===true)
-          setFilteredTasks(updatedList);
-        } else {
-            setFilteredTasks(tasks);
-        }
+  useEffect(
+    ()=>{
         
-      }, [complete])
-   
-    }
-   
-    useEffect(
-        ()=>{
-            
-            fetch(` http://localhost:8088/tasks
-            `)
-            .then(response => response.json())
-            .then((taskArray)=>{
-                setTasks(taskArray)
-         
-            })
+        fetch(` http://localhost:8088/tasks
+        `)
+        .then(response => response.json())
+        .then((taskArray)=>{
+            setTasks(taskArray)
+     
+        })
 
-        },
-       []
+    },
+   []
+  
+)
+
+
+useEffect(
+    () => {
+    const newTasklist=(tasks.filter((task) => !task.complete));
+    setFilteredTasks(newTasklist)
+  }, 
+  [tasks]
+  
+  )
+
+  const handleTaskCompletion = (taskId) => {
+    const updatedTasks = tasks.map(task => {
+      if (task.id === taskId) {
+        task.complete = true 
+      }
+        return task
       
-    )
-    
-    return <>
-    {
-        <button onClick={() => navigate("/task/create")}>New Task</button>
-    }
-    <h2> Tasks List</h2>
-    <article className="tasks">
-    {
-        filteredTasks.map(
-            (task)=>{
-                if(task.complete === false){
-                return <section className="task" key={`task--${task.id}`}>
-                    <input value={task} type="checkbox" onChange={handleCheckedBox}  />
-                    <header>{task.task}</header>
-                    <header>{task.dueDate}</header>
-                    
-                </section>
-            }
-          }
-        )
-    }
-    </article>
-    </>
+    });
 
+    setTasks(updatedTasks);
+    
+    const updatedTask = updatedTasks.find(task => task.id === taskId)
+    fetch(`http://localhost:8088/tasks/${taskId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedTask)
+    });
+  };
+
+
+  return (
+    <div>
+      {filteredTasks.map(task => (
+        <div key={task.id}>
+          <input
+            type="checkbox"
+            checked={task.complete}
+            onChange={() => handleTaskCompletion(task.id)}
+          />
+          <section>{task.task}</section>
+          <section>{task.dueDate}</section>
+          
+        </div>
+      ))}
+    </div>
+  );
 }
+
+

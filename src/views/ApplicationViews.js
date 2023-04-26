@@ -15,12 +15,14 @@ export const ApplicationViews = () => {
         <Route path="/" element={
             <>
               <Outlet />
+              <TaskList/>
             </>
              
-          }/>
-          <Route path="tasks" element = {<TaskList/>}/>
-          <Route path="task/create" element={ <TaskForm /> } />
+          }>
           
+          {/* <Route path="tasks" element = {<TaskList/>}/>
+          <Route path="task/create" element={ <TaskForm /> } /> */}
+       </Route >  
 
       </Routes>
     )
