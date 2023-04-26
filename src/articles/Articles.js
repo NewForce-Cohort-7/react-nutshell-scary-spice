@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import AddArticle from "./AddArticle"
+import EditArticle from "./EditArticle"
 import './Articles.css'
 
 const Articles = () => {
   const [articles, setArticles] = useState([])
   const [showAddArticleForm, setShowAddArticleForm] = useState(false)
+  
+  // edit article
+  const [showEditArticleForm, setShowEditArticleForm] = useState(false) // state to show the edit article form
+  const [articleToEdit, setArticleToEdit] = useState(null) // state to hold the article to edit
+
+  // user object from local storage
   const localNutshellUser = localStorage.getItem("nutshell_user")
   const nutshellUserObject = JSON.parse(localNutshellUser)
   const userId = nutshellUserObject.id
@@ -23,7 +30,7 @@ const Articles = () => {
         const sortedArticles = data.sort((a, b) => new Date(b.date) - new Date(a.date)) // sorts articles by date
         const updatedArticles = sortedArticles.map(article => ({ // this is the map function to add tags to the articles
           ...article, 
-          tags: article.tags ? article.tags.map(tag => tag.name) : [], // grabbing the tag names from the tags array 
+          tags: article.tags ? article.tags.map(tag => tag.name) : [], // if articles.tag is true, map over the tags and return the tag name. if false, return an empty array
         }))
         // update state with new articles
         setArticles(updatedArticles)
@@ -41,7 +48,7 @@ const Articles = () => {
     setArticles(filteredArticles)
 }
 
-// add an article to the database (saveArticle)
+// add an article to the database 
   const handleSaveArticle = (article) => {
     const newArticle = {
       userId: nutshellUserObject.id,
@@ -52,7 +59,7 @@ const Articles = () => {
       tags: article.tags.split(",").map((tag) => ({ name: tag.trim() })),
     }
 
-    // Save the article and tags in a single request
+    // Save the article and tags in a single request (saveArticle)
     fetch("http://localhost:8088/articles", {
       method: "POST",
       headers: {
@@ -75,12 +82,48 @@ const Articles = () => {
     })
   }
 
+  // this is the PUT request to update an article in the database 
+  const handleUpdateArticle = (updatedArticle) => {
+    const newArticle = {
+      userId: nutshellUserObject.id,
+      title: updatedArticle.title,
+      synopsis: updatedArticle.synopsis,
+      url: updatedArticle.url,
+      date: updatedArticle.date,
+      tags: updatedArticle.tags.split(",").map((tag) => ({ name: tag.trim() })),
+    }
+
+    // Update the article and tags in a single request (updateArticle)
+    fetch(`http://localhost:8088/articles/${updatedArticle.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newArticle),
+    })
+      .then(() => {
+        // After updating the article and tags, fetch the updated articles
+        fetchArticles()
+      })
+  }
+
+  // function to open the edit article form in a modal
+  const openEditArticleForm = (article) => {
+    setArticleToEdit(article) // sets the article to edit
+    setShowEditArticleForm(true) // shows the edit article form modal
+  }
+
+  // function to close the edit article form ('x' button on modal)
+  const closeEditArticleForm = () => {
+    setShowEditArticleForm(false)
+  }
+
   // hides the add article form until the 'add article' button is clicked
   const toggleAddArticleForm = () => {
     setShowAddArticleForm(!showAddArticleForm)
   }
 
-  // show all articles 
+  // show all articles upon clicking the 'show all articles' button
   const handleShowAllArticles = () => {
     fetchArticles()
   }
@@ -141,13 +184,22 @@ const Articles = () => {
                >
                  Delete
                </Button>
+
+               <Button
+                  bsPrefix="edit-button"
+                  variant="warning"
+                  onClick={() => openEditArticleForm(article)}
+                >
+                  Edit
+                </Button>
+
              </div>
            </div>
          </div>
           ))}
 
           <div className="add-article-show-all-buttons">
-          <Button variant="primary" onClick={toggleAddArticleForm} className="mt-3" bsPrefix="add-new-article-button">
+          <Button variant="primary" onClick={toggleAddArticleForm} bsPrefix="add-new-article-button">
             + Add new article
           </Button>
           <span className="divider">|</span>
@@ -160,7 +212,18 @@ const Articles = () => {
           </Button>
           
           {showAddArticleForm && (
-            <AddArticle handleSaveArticle={handleSaveArticle} />
+            <AddArticle handleSaveArticle={handleSaveArticle}
+            toggleAddArticleForm={toggleAddArticleForm}
+            />
+          )}
+
+          {showEditArticleForm && (
+            <EditArticle
+              show={showEditArticleForm}
+              handleClose={closeEditArticleForm}
+              handleUpdateArticle={handleUpdateArticle}
+              article={articleToEdit}
+            />
           )}
           </div>
           

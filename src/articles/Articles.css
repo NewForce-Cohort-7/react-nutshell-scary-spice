@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
 
+/* HELPERS */
+/* this is the "|" in between add new article & show all articles */
+.divider {
+    margin: 0 5px;
+    color: #d2d2d2;
+}
+
+/* ARTICLES */
+/* container for all articles */
+.article-container {
+    border: 1px solid #d2d2d2;
+    padding: 0;
+    box-shadow: 0 4px 2px -2px #d2d2d2;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* article container header */
 .main-article-heading {
     font-family: 'Lobster';
     color: #019587;
@@ -8,29 +26,24 @@
     border-bottom: 1px solid #d2d2d2;
 }
 
-.article-container {
-    border: 1px solid #d2d2d2;
-    padding: 0;
-    box-shadow: 0 4px 2px -2px #d2d2d2;
-    margin-top: 50px;
-    margin-bottom: 50px;
-
-}
-
+/* individual articles */
 .inner-article {
     padding: 10px 20px;
 }
 
+/* individual article title */
 .article-title {
     font-size: 20px;
     margin-bottom: 0;
 }
 
+/* individual article date */
 .article-date {
     color: #455559;
     margin-right: 10px;
 }
 
+/* these are the tags */
 .tag-button {
     background: #fff;
     border: none;
@@ -40,6 +53,7 @@
     height: 0;
 }
 
+/* updating the pseudo classes for the tags */
 .tag-button:hover, .tag-button:active, .tag-button:focus, .tag-button:disabled {
     background: #fff;
     color: #455559;
@@ -47,6 +61,13 @@
     height: 0;
 }
 
+/* article synopsis textarea */
+.article-synopsis {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* + add new article button */
 .add-new-article-button {
     background: #fff;
     border: 0;
@@ -54,6 +75,7 @@
     font-weight: 500;
 }
 
+/* open article button */
 .open-button {
     background: #019587;
     color: #fff;
@@ -64,10 +86,12 @@
     margin-bottom: 5px;
 }
 
+/* open article button hover */
 .open-button:hover {
     color: #fff;
 }
 
+/* delete article button */
 .delete-button {
     background: gray;
     border: none;
@@ -75,6 +99,28 @@
     padding: 5px 10px;
     width: 75px;
     text-align: center;
+}
+
+/* edit button */
+.edit-button {
+    background: #019587;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    width: 75px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* ARTICLE FORM */
+/* submit article button */
+/* add new article form formatting */
+.add-article-form {
+    padding: 20px;
+    border-top: 1px solid #d2d2d2;
+    margin-top: 20px;
 }
 
 .submit-article-button {
@@ -86,40 +132,62 @@
     margin-top: 15px;
 }
 
+/* cancel article button */
+.cancel-article-button {
+    background: gray;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+/* this is the openDelete container */
 .openDelete {
     margin-top: 10px;
 }
 
-.article-synopsis {
-    width: 100%;
-    max-width: 600px;
-}
-
-.add-article-form {
-    padding: 20px;
-    border-top: 1px solid #d2d2d2;
-    margin-top: 20px;
-}
-
+/* container for buttons */
 .add-article-show-all-buttons {
     padding: 10px 20px;
 }
 
-.divider {
-    margin: 0 5px;
-    color: #d2d2d2;
-}
-
+/* article form label */
 .article-form-label {
     font-weight: 500;
     margin-bottom: 0;
 }
 
+/* adjusting the space between the fields */
 .article-form-group {
     margin-bottom: 10px;
 }
 
+/* changes the border color for form control focus */
 .form-control:focus {
     border-color: #019587;
     box-shadow: 1px 1px 3px #019589;
+}
+
+
+/* EDIT ARTICLE MODAL */
+/* edit article modal title */
+.article-modal-title {
+    font-family: 'Lobster';
+    color: #019587;
+    font-size: 28px;
+    margin-bottom: 0;
+}
+
+/* update article button in modal */
+.update-article-button {
+    background: #019587;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
