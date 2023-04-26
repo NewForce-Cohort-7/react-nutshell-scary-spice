@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300#019587;1,400;1,600;1,700&display=swap');
 
 .h1, h1 {
-    font-size: 4rem;
+    font-size: 2.5rem;
     font-family: 'Lobster', cursive;
     color: #019589;
+}
+
+.login-heading {
+    font-size: 4rem;
 }
 
 .register-title {

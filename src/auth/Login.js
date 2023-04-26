@@ -36,7 +36,7 @@ export const Login = () => {
             <Row>
                 <Col xs={10} sm={6} lg={4} md={8} className="login-container mx-auto">
                 <form onSubmit={handleLogin}>
-                    <h1>Nutshell</h1>
+                    <h1 className="login-heading">Nutshell</h1>
                     <h2 className="please">Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail" className="sansSerif"> Email address </label>
