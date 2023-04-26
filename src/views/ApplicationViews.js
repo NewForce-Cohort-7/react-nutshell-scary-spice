@@ -1,6 +1,8 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { Login } from "../auth/Login"
-import NavBar from "../nav/NavBar"
+import { EventList } from "../Events/EventList"
+import { EventForm } from "../Events/EventForm"
+
 
 export const ApplicationViews = () => {
   // Retrieving the user object from local storage
@@ -14,8 +16,11 @@ export const ApplicationViews = () => {
           path="/"
           element={
             <>
-              <NavBar />
+              
               <Outlet />
+             <EventList/>
+             <EventForm/>
+       
             </>
           }
         />
