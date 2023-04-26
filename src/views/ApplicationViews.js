@@ -1,7 +1,11 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { Login } from "../auth/Login"
+<<<<<<< HEAD
 import { TaskList } from "../tasks/TaskList"
 import { TaskForm } from "../tasks/TaskForm"
+=======
+import Articles from "../articles/Articles"
+>>>>>>> master
 
 
 export const ApplicationViews = () => {
@@ -14,6 +18,10 @@ export const ApplicationViews = () => {
       <Routes>
         <Route path="/" element={
             <>
+<<<<<<< HEAD
+=======
+              <Articles />
+>>>>>>> master
               <Outlet />
               <TaskList/>
             </>
