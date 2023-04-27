@@ -137,7 +137,7 @@ const Articles = () => {
   return (
     <Container id="articles">
       <Row>
-        <Col sm={{ span: 8, offset: 2 }} className="article-container">
+        <Col lg={{ span: 8, offset: 2 }} className="article-container">
           <h1 className="main-article-heading">Articles</h1>
           
           {articles.map((article) => (

@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300#019587;1,400;1,600;1,700&display=swap');
+
+:root {
+    --sans-serif: 'Source Sans Pro', Arial, sans-serif;
+    --teal: #019587;
+    --lightgray: #d2d2d2;
+    --darkgray: #455559;
+    --ruby: #D92525;
+}
+
+
+
+.images-container {
+    border: 1px solid var(--lightgray);
+    padding: 0;
+    box-shadow: 0 4px 2px -2px var(--lightgray);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.main-images-heading {
+    font-family: 'Lobster';
+    color: var(--teal);
+    padding: 20px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--lightgray);
+}
+
+.inner-image-container {
+    margin: 20px;
+}
+
+.add-image-button {
+    font-family: var(--sans-serif);
+    background: var(--teal);
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.delete-image-button {
+    font-family: var(--sans-serif);
+    background: var(--ruby);
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    width: 75px;
+    text-align: center;
+}
+
+.no-round {
+    border-radius: 0;
+}
+
+.save-image-button {
+    font-family: var(--sans-serif);
+    background: #019587;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.image-form-label {
+    font-family: var(--sans-serif);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.image-form-group {
+    margin-bottom: 10px;
+}
+
+.add-image-form {
+    padding: 30px 60px;
+    border-top: 1px solid var(--lightgray);
+    margin-top: 20px;
+}
