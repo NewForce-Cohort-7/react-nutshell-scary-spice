@@ -119,7 +119,7 @@ const fetchChats = () => {
                         </div>
                          
                         <Button
-                            bsPrefix="delete-button"
+                            bsPrefix="chat-delete-button"
                             variant="danger"
                             onClick={() => handleDeleteChat(chat.id)}
                         >
