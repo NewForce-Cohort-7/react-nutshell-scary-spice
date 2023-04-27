@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-export const EventForm = () => {
+export const EventForm = ({updateEvent}) => {
     /*
          Add the correct default properties to the
         initial state object
@@ -41,7 +41,12 @@ export const EventForm = () => {
             body: JSON.stringify(ticketToSendToApi)
         })
         .then(response => response.json())
-        .then((event => update(event))//<------changed
+        .then(() => {
+            fetch(`http://localhost:8088/events`)//gets stuff from api
+            .then(r => r.json())//translates into JS
+            .then( events => updateEvent(events))//utilizes the information
+        
+        })
     }
 
     return (

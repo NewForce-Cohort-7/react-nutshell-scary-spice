@@ -1,15 +1,8 @@
 import { useEffect, useState } from "react"
 import { Events } from "./Events.js"
 
-export const EventList = () => {
-const [events, setEvents] = useState([])
+export const EventList = ({events}) => {
 
-
-useEffect(() => {
-    fetch(`http://localhost:8088/events`)
-    .then(r => r.json())
-    .then( events => setEvents(events))
-}, [])
 
     return (
 
