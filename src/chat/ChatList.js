@@ -104,7 +104,7 @@ const fetchChats = () => {
      return (
         <Container id="chat">
           <Row>
-            <Col sm={{ span: 7, offset: 3 }} className="chat-container">
+            <Col sm={{ span: 8, offset: 2 }} className="chat-container">
                <h1 className="chat-heading">Chats</h1>
             
                 {chat.map((chat) => (
