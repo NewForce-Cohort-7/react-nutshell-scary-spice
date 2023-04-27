@@ -2,6 +2,11 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 export const TaskForm = () => {
+
+
+
+
+
     /*
         TODO: Add the correct default properties to the
         initial state object
@@ -30,7 +35,7 @@ export const TaskForm = () => {
             userId:nutshellUserObject.id,
             task:task.task,
             dueDate:task.dueDate,
-            complete:''
+            complete:false
             
         }
 
@@ -52,6 +57,8 @@ export const TaskForm = () => {
     
 
     return (
+        <>
+        
         <form className="taskForm">
             <h2 className="taskForm__title">New Task</h2>
             <fieldset>
@@ -86,23 +93,12 @@ export const TaskForm = () => {
                         } />
                 </div>
             </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="complete">Complete:</label>
-                    <input type="checkbox"
-                        value={task.complete}
-                        onChange={
-                            (evt) =>{
-                            const copy = {...task}
-                              copy.complete = evt.target.checked  
-                              update(copy) 
-                            }
-                        } />
-                </div>
-            </fieldset>
+            
             <button onClick={(clickEvent) =>{handleSaveButtonClick(clickEvent)}}className="btn btn-primary">
                 Submit Task
             </button>
         </form>
+
+        </>
     )
 }

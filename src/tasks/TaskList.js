@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router'; 
+import { TaskForm } from './TaskForm';
+import { EditTaskItem } from './EditTaskItem';
 
 export const TaskList = () => {
-  
+const navigate = useNavigate  
 const [tasks, setTasks] = useState([]);
 const [filteredTasks, setFilteredTasks] = useState([]);
 
+const [isFormVisible, setIsFormVisible] = useState(false)
+
+const toggleAddTaskForm = () => {
+    setIsFormVisible(!isFormVisible)
+  }
+
+  const fetchALLTasks = () => { // this is the GET request to get all tasks from the database 
   useEffect(
     ()=>{
         
@@ -20,7 +30,7 @@ const [filteredTasks, setFilteredTasks] = useState([]);
    []
   
 )
-
+  }
 
 useEffect(
     () => {
@@ -49,14 +59,22 @@ useEffect(
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(updatedTask)
-    });
-  };
+    })
+        .then(() => {
+        // After updating fetch the updated tasks
+        fetchALLTasks()
+      })
+  }
 
+  return <>
+  
 
-  return (
+  <button onClick={toggleAddTaskForm}>New Task</button>
+    {isFormVisible && <TaskForm />}
+ 
     <div>
       {filteredTasks.map(task => (
-        <div key={task.id}>
+        <div key={task.id} > <EditTaskItem task= {task} fetchAllTasks={fetchALLTasks}/>
           <input
             type="checkbox"
             checked={task.complete}
@@ -68,7 +86,7 @@ useEffect(
         </div>
       ))}
     </div>
-  );
+
+</>
+
 }
-
-
