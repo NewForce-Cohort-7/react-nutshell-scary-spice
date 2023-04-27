@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const ChatForm = () => {
-    const [chat, update] = useState({
-        userName: "",
-        message: "",
-      
-    })
+export const ChatForm = ({ handleSaveChat }) => {
+    const [message, setMessage]  = useState("")
+    const [userName, setUserName] = useState("")
+    const formRef = useRef
+    
     
 
     //redirect user to Chat List
@@ -14,9 +13,12 @@ export const ChatForm = () => {
     const localNutshellUser = localStorage.getItem("nutshell_user")
     const nutshellUserObject = JSON.parse(localNutshellUser)
 
-    const handleSaveButtonClick = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
-
+        if (formRef.current) {
+            formRef.current.reset()
+        }
+    
 
 
         //Create object to be saved to the API
@@ -39,11 +41,11 @@ export const ChatForm = () => {
             .then(() => {
                 navigate("/chat")
             })
-    }
+        }
 
     return (
-        <form className="chatForm">
-            <h2 className="chatForm__title">New Message</h2>
+        <Form ref={formRef} onSubmit={handleSubmit} className="chatForm">
+            <Form.Group className="chatForm__title">New Message</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="userName">UserName:</label>

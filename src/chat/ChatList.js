@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import "./Chat.css"
 import { Chat } from "./Chat"
 import { useNavigate } from "react-router-dom"
+import { ChatForm } from "./ChatForm"
 
 
 export const ChatList = () => {
