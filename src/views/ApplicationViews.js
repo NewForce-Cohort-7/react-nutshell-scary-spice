@@ -2,6 +2,7 @@ import { Outlet, Route, Routes, Link } from "react-router-dom"
 import { Login } from "../auth/Login"
 import { TaskList } from "../tasks/TaskList"
 import Articles from "../articles/Articles"
+import Images from "../images/Images"
 
 
 export const ApplicationViews = () => {
@@ -15,7 +16,9 @@ export const ApplicationViews = () => {
         <Route path="/" element={
             <>
               <TaskList/>
+              
               <Articles />
+              <Images />
               <Outlet />
             </>
              
