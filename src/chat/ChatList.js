@@ -6,7 +6,7 @@ import { ChatForm } from "./ChatForm"
 
 export const ChatList = () => {
     const [chat, setChats] = useState([])
-    const [showChatForm, setShowChatForm] = useState(false)
+    const [showChatFormForm, setShowChatFormForm] = useState(false)
 
     const localNutshellUser = localStorage.getItem("nutshell_user")
     const nutshellUserObject = JSON.parse(localNutshellUser)
@@ -20,16 +20,16 @@ const fetchChats = () => {
     fetch(`http://localhost:8088/chat?userId=${userId}`)
     .then(response => response.json())
     .then(data => {
-        const sortedChats = data.sort((a, b) => new Date(b.date) - new Date(a.date)) // sorts articles by date
-        const updatedChats = sortedChats.map(chat => ({ // this is the map function to add tags to the chats
+        const sortedChats = data.sort((a, b) => new Date(b.date) - new Date(a.date)) // sorts chats by date
+        const updatedChats = sortedChats.map(chat => ({ 
           ...chat, 
-          tags: chat.tags ? chat.tags.map(tag => tag.name) : [], // if chats.tag is true, map over the tags and return the tag name. if false, return an empty array
+          tags: chat.tags ? chat.tags.map(tag => tag.name) : [], 
         }))
         // update state with new chats
         setChats(updatedChats)
       })
   }
-// add an chatto the database 
+// add an chat to the database 
   const handleSendChat = (chat) => {
     const newMessage = {
       userId: nutshellUserObject.id,
@@ -53,7 +53,7 @@ const fetchChats = () => {
       })
   }
 
-  // this is the DELETE request to remove an chatfrom the database (deleteArticle)
+  // this is the DELETE request to remove an chat rom the database (deleteChat)
   const handleDeleteChat = (id) => {
     fetch(`http://localhost:8088/chat/${id}`, {
       method: "DELETE",
@@ -62,14 +62,14 @@ const fetchChats = () => {
     })
   }
 
-  // this is the PUT request to update an chatin the database 
-  const handleUpdateChat = (updatedChat) => {
-    const newMessage = {
-      userId: nutshellUserObject.id,
-      userName: updatedChat.userName,
-      message: updatedChat.message,
-      date: updatedChat.date,
-    }
+  // this is the PUT request to update an chat in the database 
+        const handleUpdateChat = (updatedChat) => {
+            const newMessage = {
+            userId: nutshellUserObject.id,
+            userName: updatedChat.userName,
+            message: updatedChat.message,
+            date: updatedChat.date,
+            }
 
     
 
@@ -81,14 +81,14 @@ const fetchChats = () => {
       body: JSON.stringify(newMessage),
     })
       .then(() => {
-        // After updating the chat, fetch the updated chat
+        // After updating the chat, fetch
         fetchChats()
       })
   }
 
-  // hides the add chatform until the 'new message' button is clicked
-  const toggleChatForm = () => {
-    setShowChatForm(!showChatForm)
+  // hides the add chat form until the 'new message' button is clicked
+  const toggleChatFormForm = () => {
+    setShowChatFormForm(!showChatFormForm)
   }
 
   // show all chats upon clicking the 'show all chats' button
@@ -131,22 +131,17 @@ const fetchChats = () => {
                ))}
 
                     <div className="chat-form-show-all-buttons">
-                    <Button variant="primary" onClick={toggleChatForm} bsPrefix="add-new-chat-button">
+                    <Button variant="primary" onClick={toggleChatFormForm} bsPrefix="add-new-chat-button">
                         + Send New Message
                      </Button>
-                        <Button
-                        variant="info"
-                        onClick={handleShowAllChats}
-                        bsPrefix="add-new-message-button"
-                    >
-                        Chat History
-                    </Button>
-                    
-                      {showChatForm && (
+                       
+                        {showChatFormForm && (
                         <ChatForm handleSendChat={handleSendChat}
-                        toggleChatForm={toggleChatForm}
-                        />
-                  )}
+                        toggleChatFormForm={toggleChatFormForm}
+                />
+            )} 
+                    
+                
                
             </div>
             
@@ -154,4 +149,4 @@ const fetchChats = () => {
         </Row>
         </Container>
     )}
-export default ChatList
+ 

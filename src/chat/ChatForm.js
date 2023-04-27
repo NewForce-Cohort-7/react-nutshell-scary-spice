@@ -3,7 +3,8 @@ import { useRef } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button, Form, CloseButton } from "react-bootstrap";
 
- const ChatForm = ({ handleSendChat, toggleChatForm }) => {
+
+ export const ChatForm = ({ handleSendChat, toggleChatFormForm }) => {
     const [message, setMessage]  = useState("")
     const [userName, setUserName] = useState("")
     const formRef = useRef()
@@ -19,7 +20,7 @@ import { Button, Form, CloseButton } from "react-bootstrap";
 
     return (
         <Form ref={formRef} onSubmit={handleSubmit} className="chat-form">
-            <div className="chat-form-close-button"><CloseButton type="button" onClick={toggleChatForm}></CloseButton></div>
+            <div className="chat-form-close-button"><CloseButton type="button" onClick={toggleChatFormForm}></CloseButton></div>
             <Form.Group className="chat-form-group">
                 <Form.Label className="chat-Form-label">UserName:</Form.Label>
                     <Form.Control
@@ -50,4 +51,4 @@ import { Button, Form, CloseButton } from "react-bootstrap";
       )
  }
 
- export default ChatForm
+

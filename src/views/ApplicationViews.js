@@ -17,7 +17,7 @@ export const ApplicationViews = () => {
           path="/"
           element={
             <>
-              
+              <ChatList />
               <Articles />
               <Images />
               <Outlet />
