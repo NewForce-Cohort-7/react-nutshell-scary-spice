@@ -1,8 +1,8 @@
 export const Events = ({events}) => {
     return (    
         <>
-            <h2>{events.name}</h2>
-            <ul>
+            <ul class="agendaList">
+                <li>{events.name}</li>
                 <li>{events.date}</li>
                 <li>{events.location}</li>
             

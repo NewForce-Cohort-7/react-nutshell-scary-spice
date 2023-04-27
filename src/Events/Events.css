@@ -1,0 +1,6 @@
+.agendaList:first-of-type > li:first-child{    
+    width: 50%;    
+    background-color: teal;    
+    padding: 5px;    
+    font-size: larger;   
+    font-weight: bold;  }

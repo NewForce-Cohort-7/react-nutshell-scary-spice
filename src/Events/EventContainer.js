@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { EventForm } from "./EventForm"
 import { EventList } from "./EventList"
+import "./Events.css"
 
 export const EventContainer = () => {
     const [events, setEvents] = useState([])
