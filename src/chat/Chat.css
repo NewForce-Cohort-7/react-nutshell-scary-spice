@@ -8,9 +8,16 @@
   }
 
 
-  .delete-button {
-   width: 30px;
+  .chat-delete-button {
+    font-family: var(--sans-serif);
+    background: var(--ruby);
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    width: 75px;
+    text-align: center;
 }
+
 .chat-date {
     font-family: var(--sans-serif);
     color: var(--darkgray);
