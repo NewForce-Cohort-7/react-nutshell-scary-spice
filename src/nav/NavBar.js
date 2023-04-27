@@ -1,7 +1,7 @@
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import NavItem from 'react-bootstrap/NavItem'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-scroll'
 import "./NavBar.css"
 
 const NavBar = () => {
@@ -16,14 +16,12 @@ const NavBar = () => {
                 <Nav className="ms-auto">
                     <Nav.Link href="#events" bsPrefix="nav-link-custom">Events</Nav.Link>
                     <Nav.Link href="#tasks" bsPrefix="nav-link-custom">Tasks</Nav.Link>
-                    <Nav.Link href="#articles" bsPrefix="nav-link-custom">Articles</Nav.Link>
+                    <Nav.Link as={Link} bsPrefix="nav-link-custom" to="articles">Articles</Nav.Link>
                     {isLoggedIn &&
-                        <NavItem className="navbar__item navbar__logout">
                             <Nav.Link bsPrefix="nav-link-custom" to="/" onClick={() => {
                                 localStorage.removeItem("nutshell_user")
                                 navigate("/", { replace: true })
                             }}>Logout</Nav.Link>
-                        </NavItem>
                     }
                 </Nav>
             </Navbar.Collapse>

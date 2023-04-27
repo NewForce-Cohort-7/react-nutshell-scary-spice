@@ -1,60 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300#019587;1,400;1,600;1,700&display=swap');
 
-.main-article-heading {
-    font-family: 'Lobster';
-    color: #019587;
-    padding: 20px;
-    margin-bottom: 0;
-    border-bottom: 1px solid #d2d2d2;
+:root {
+    --sans-serif: 'Source Sans Pro', Arial, sans-serif;
+    --teal: #019587;
+    --lightgray: #d2d2d2;
+    --darkgray: #455559;
+    --ruby: #D92525;
 }
 
+.form-control {
+    font-family: var(--sans-serif);
+}
+
+
+/* HELPERS */
+/* this is the "|" in between add new article & show all articles */
+.divider {
+    margin: 0 5px;
+    color: var(--lightgray);
+}
+
+
+/* ARTICLES */
+/* container for all articles */
 .article-container {
-    border: 1px solid #d2d2d2;
+    border: 1px solid var(--lightgray);
     padding: 0;
-    box-shadow: 0 4px 2px -2px #d2d2d2;
+    box-shadow: 0 4px 2px -2px var(--lightgray);
     margin-top: 50px;
     margin-bottom: 50px;
-
 }
 
+/* article container header */
+.main-article-heading {
+    font-family: 'Lobster';
+    color: var(--teal);
+    padding: 20px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--lightgray);
+}
+
+/* individual articles */
 .inner-article {
-    padding: 10px 20px;
+    padding: 20px 20px;
+    border-bottom: 1px solid var(--lightgray);
 }
 
+/* individual article title */
 .article-title {
+    font-family: var(--sans-serif);
     font-size: 20px;
     margin-bottom: 0;
+    font-weight: 600;
 }
 
+/* individual article date */
 .article-date {
-    color: #455559;
+    font-family: var(--sans-serif);
+    color: var(--darkgray);
     margin-right: 10px;
 }
 
+/* these are the tags */
 .tag-button {
+    font-family: var(--sans-serif);
     background: #fff;
     border: none;
-    color: #019589;
-    font-weight: 500;
+    color: var(--teal);
     padding-right: 0;
     height: 0;
 }
 
+/* updating the pseudo classes for the tags */
 .tag-button:hover, .tag-button:active, .tag-button:focus, .tag-button:disabled {
     background: #fff;
-    color: #455559;
+    color: var(--darkgray);
     padding-right: 0;
     height: 0;
 }
 
+/* article synopsis textarea */
+.article-synopsis {
+    font-family: var(--sans-serif);
+    width: 100%;
+    max-width: 600px;
+}
+
+/* + add new article button */
 .add-new-article-button {
+    font-family: var(--sans-serif);
     background: #fff;
     border: 0;
     color: #019587;
-    font-weight: 500;
+    font-weight: 600;
 }
 
+/* open article button */
 .open-button {
+    font-family: var(--sans-serif);
     background: #019587;
     color: #fff;
     padding: 5px 10px;
@@ -64,12 +107,15 @@
     margin-bottom: 5px;
 }
 
+/* open article button hover */
 .open-button:hover {
     color: #fff;
 }
 
+/* delete article button */
 .delete-button {
-    background: gray;
+    font-family: var(--sans-serif);
+    background: var(--ruby);
     border: none;
     color: #fff;
     padding: 5px 10px;
@@ -77,7 +123,36 @@
     text-align: center;
 }
 
+/* edit button */
+.edit-button {
+    font-family: var(--sans-serif);
+    background: #019587;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    width: 75px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+/* ARTICLE FORM */
+/* submit article button */
+/* add new article form formatting */
+.add-article-form {
+    padding: 20px;
+    border-top: 1px solid var(--lightgray);
+    margin-top: 20px;
+}
+
+.add-article-close-button {
+    display: flex;
+    justify-content: end;
+}
+
 .submit-article-button {
+    font-family: var(--sans-serif);
     background: #019587;
     border: none;
     color: #fff;
@@ -86,40 +161,65 @@
     margin-top: 15px;
 }
 
+/* cancel article button */
+.cancel-article-button {
+    font-family: var(--sans-serif);
+    background: gray;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+/* this is the openDelete container */
 .openDelete {
     margin-top: 10px;
 }
 
-.article-synopsis {
-    width: 100%;
-    max-width: 600px;
-}
-
-.add-article-form {
-    padding: 20px;
-    border-top: 1px solid #d2d2d2;
-    margin-top: 20px;
-}
-
+/* container for buttons */
 .add-article-show-all-buttons {
     padding: 10px 20px;
 }
 
-.divider {
-    margin: 0 5px;
-    color: #d2d2d2;
-}
-
+/* article form label */
 .article-form-label {
-    font-weight: 500;
+    font-family: var(--sans-serif);
+    font-weight: 600;
     margin-bottom: 0;
 }
 
+/* adjusting the space between the fields */
 .article-form-group {
     margin-bottom: 10px;
 }
 
-.form-control:focus {
+/* changes the border color for form control focus */
+.form-control:focus, .btn-close:focus {
     border-color: #019587;
-    box-shadow: 1px 1px 3px #019589;
+    box-shadow: 1px 1px 3px var(--teal);
+}
+
+
+/* EDIT ARTICLE MODAL */
+/* edit article modal title */
+.article-modal-title {
+    font-family: 'Lobster', cursive;
+    color: var(--teal);
+    font-size: 28px;
+    margin-bottom: 0;
+}
+
+/* update article button in modal */
+.update-article-button {
+    font-family: var(--sans-serif);
+    background: var(--teal);
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }

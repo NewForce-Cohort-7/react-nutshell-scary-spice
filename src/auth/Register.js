@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Row, Container, Col } from "react-bootstrap"
 import "./Login.css"
 
 export const Register = (props) => {
@@ -52,25 +53,33 @@ export const Register = (props) => {
     }
 
     return (
-        <main style={{ textAlign: "center" }}>
-            <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for Nutshell</h1>
-                <fieldset>
-                    <label htmlFor="fullName"> Full Name </label>
-                    <input onChange={updateUser}
-                           type="text" id="fullName" className="form-control"
-                           placeholder="Enter your name" required autoFocus />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="email"> Email address </label>
-                    <input onChange={updateUser}
-                        type="email" id="email" className="form-control"
-                        placeholder="Email address" required />
-                </fieldset>
-                <fieldset>
-                    <button type="submit"> Register </button>
-                </fieldset>
-            </form>
-        </main>
+        <div className="login-page">
+        <div className="centered-container">
+        <Container>
+            <Row>
+            <Col xs={10} sm={6} lg={4} md={6} className="login-container mx-auto">
+                <form onSubmit={handleRegister}>
+                    <h2 className="mb-3 font-weight-normal register-title">Please Register for Nutshell</h2>
+                    <fieldset>
+                        <label htmlFor="fullName" className="sansSerif"> Full Name </label>
+                        <input onChange={updateUser}
+                            type="text" id="fullName" className="form-control"
+                            placeholder="Enter your name" required autoFocus />
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="email" className="sansSerif"> Email address </label>
+                        <input onChange={updateUser}
+                            type="email" id="email" className="form-control"
+                            placeholder="Email address" required />
+                    </fieldset>
+                    <fieldset>
+                        <button type="submit" className="sign-in-button"> Register </button>
+                    </fieldset>
+                </form>
+        </Col>
+        </Row>
+        </Container>
+        </div>
+        </div>
     )
 }

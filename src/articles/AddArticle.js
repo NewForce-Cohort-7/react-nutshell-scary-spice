@@ -1,8 +1,8 @@
 import { useState, useRef } from "react"
-import { Button, Form } from "react-bootstrap"
+import { Button, Form, CloseButton } from "react-bootstrap"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const AddArticle = ({ handleSaveArticle }) => {
+const AddArticle = ({ handleSaveArticle, toggleAddArticleForm }) => {
     const [title, setTitle] = useState("")
     const [synopsis, setSynopsis] = useState("")
     const [url, setUrl] = useState("")
@@ -22,6 +22,7 @@ const AddArticle = ({ handleSaveArticle }) => {
 
     return (
         <Form ref={formRef} onSubmit={handleSubmit} className="add-article-form">
+            <div className="add-article-close-button"><CloseButton type="button" onClick={toggleAddArticleForm}></CloseButton></div>
             <Form.Group className="article-form-group">
                 <Form.Label className="article-form-label">Article Title:</Form.Label>
                 <Form.Control
@@ -51,17 +52,17 @@ const AddArticle = ({ handleSaveArticle }) => {
                 />
             </Form.Group>
             <Form.Group className="article-form-group">
-                    <Form.Label className="article-form-label">Tags:</Form.Label>
-                    <Form.Control
-                        type="text"
-                        onChange={(event) => setTags(event.target.value)}
-                        placeholder="Enter comma-separated tags"
+                <Form.Label className="article-form-label">Tags:</Form.Label>
+                <Form.Control
+                    type="text"
+                    onChange={(event) => setTags(event.target.value)}
+                    placeholder="Enter comma-separated tags"
                     />
                 </Form.Group>
             <Button 
-            variant="primary" 
-            type="submit"
-            bsPrefix="submit-article-button">
+                variant="primary" 
+                type="submit"
+                bsPrefix="submit-article-button">
                 Submit Article
             </Button>
         </Form>
