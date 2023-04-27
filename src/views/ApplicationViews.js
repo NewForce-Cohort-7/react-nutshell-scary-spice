@@ -1,6 +1,7 @@
 import { Outlet, Route, Routes, Link } from "react-router-dom"
 import { Login } from "../auth/Login"
 import { TaskList } from "../tasks/TaskList"
+import { ChatList } from "../chat/ChatList"
 import Articles from "../articles/Articles"
 import Images from "../images/Images"
 
@@ -16,18 +17,15 @@ export const ApplicationViews = () => {
         <Route path="/" element={
             <>
               <TaskList/>
+              <ChatList />
               <Articles />
               <Images />
               <Outlet />
             </>
-             
           }>
-          {/* <Route path="task/create" element={ <TaskForm /> } /> */}
-
-          {/* <Route path="tasks" element = {<TaskList/>}/>
-          <Route path="task/create" element={ <TaskForm /> } /> */}
-       </Route >  
-
+           
+            </Route>
+        
       </Routes>
     )
   } else {
