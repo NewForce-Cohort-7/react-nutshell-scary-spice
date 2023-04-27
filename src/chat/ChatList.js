@@ -102,7 +102,7 @@ const fetchChats = () => {
     return date.toLocaleDateString()
   }  
      return (
-        <Container id="chats">
+        <Container id="chat">
           <Row>
             <Col sm={{ span: 7, offset: 3 }} className="chat-container">
                <h1 className="chat-heading">Chats</h1>
