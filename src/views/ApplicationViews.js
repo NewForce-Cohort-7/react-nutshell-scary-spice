@@ -16,7 +16,6 @@ export const ApplicationViews = () => {
         <Route path="/" element={
             <>
               <TaskList/>
-              
               <Articles />
               <Images />
               <Outlet />
