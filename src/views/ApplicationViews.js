@@ -1,7 +1,5 @@
 import { Outlet, Route, Routes, Link } from "react-router-dom"
 import { Login } from "../auth/Login"
-import { ChatForm } from "../chat/ChatForm"
-import { Chat } from "../chat/Chat"
 import { ChatList } from "../chat/ChatList"
 import Articles from "../articles/Articles"
 
@@ -18,9 +16,9 @@ export const ApplicationViews = () => {
           path="/"
           element={
             <>
-             <Chat />
+            
              <ChatList />
-             <ChatForm />
+           
               <Articles />
               <Outlet />
             </>

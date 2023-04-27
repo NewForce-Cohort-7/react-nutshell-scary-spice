@@ -2,9 +2,14 @@
   .placeholderTitle {
     color: #000;
   }
-  .chatForm {
-    border: 0.2em dotted;
-    margin: 50px;
-    flex-wrap: wrap;
-    padding: 1em;
+ 
+  .chat-form-show-all-buttons {
+    padding: auto;
   }
+  .chat-container {
+    border: olive solid 0.2em;
+  }
+
+  .delete-button {
+   width: 35px;
+}
