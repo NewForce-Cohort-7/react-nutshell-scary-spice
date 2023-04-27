@@ -2,6 +2,7 @@ import { Outlet, Route, Routes, Link } from "react-router-dom"
 import { Login } from "../auth/Login"
 import { ChatList } from "../chat/ChatList"
 import Articles from "../articles/Articles"
+import Images from "../images/Images"
 
 
 export const ApplicationViews = () => {
@@ -16,10 +17,9 @@ export const ApplicationViews = () => {
           path="/"
           element={
             <>
-            
-             <ChatList />
-           
+              
               <Articles />
+              <Images />
               <Outlet />
             </>
           }>
