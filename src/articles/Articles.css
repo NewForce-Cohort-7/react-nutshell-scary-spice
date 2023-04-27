@@ -138,7 +138,7 @@
 }
 
 /* ARTICLE FORM */
-/* submit article button */
+
 /* add new article form formatting */
 .add-article-form {
     padding: 20px;
@@ -151,6 +151,7 @@
     justify-content: end;
 }
 
+/* submit article button */
 .submit-article-button {
     font-family: var(--sans-serif);
     background: #019587;
