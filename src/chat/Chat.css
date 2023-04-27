@@ -29,15 +29,14 @@
     padding: 1em;
     box-shadow: 0 4px 2px -2px var(--lightgray);
     margin-top: 10px;
-    margin-bottom: 50px;
-    font-family: veranda ;
+    margin-bottom: 20px;
+    font-family: var(--sans-serif) ;
    
 }
 .chat-heading {
     font-family: 'Lobster';
     color: teal;
     padding: 0px;
-    
     padding-bottom: 1px;
     margin-bottom: 2px;
     border-bottom: 4px solid rgb(32, 153, 141);
