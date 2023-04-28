@@ -3,7 +3,7 @@ import { Login } from "../auth/Login"
 import { ChatList } from "../chat/ChatList"
 import Articles from "../articles/Articles"
 import Images from "../images/Images"
-
+import { EditChat } from "../chat/EditChat"
 
 export const ApplicationViews = () => {
   // Retrieving the user object from local storage
@@ -18,6 +18,7 @@ export const ApplicationViews = () => {
           element={
             <>
               <ChatList />
+              <EditChat />
               <Articles />
               <Images />
               <Outlet />

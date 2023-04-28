@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react"
 import "./Chat.css"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import { ChatForm } from "./ChatForm"
+import { EditChat } from "./EditChat"
 
 
 export const ChatList = () => {
     const [chat, setChats] = useState([])
     const [showChatFormForm, setShowChatFormForm] = useState(false)
+    const [ editChatForm, setEditChatForm ] = useState(false)
+    const [ chatEdit, setChatEdit ] = useState(null)
 
     const localNutshellUser = localStorage.getItem("nutshell_user")
     const nutshellUserObject = JSON.parse(localNutshellUser)
@@ -95,6 +98,7 @@ const fetchChats = () => {
   const handleShowAllChats = () => {
     fetchChats()
   }
+  const 
 
   // formats the date
   const formatDate = (dateString) => {
