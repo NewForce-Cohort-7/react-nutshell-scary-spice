@@ -18,13 +18,14 @@ export const ApplicationViews = () => {
           element={
             <>
               <ChatList />
-              <EditChat />
+            
               <Articles />
               <Images />
               <Outlet />
             </>
           }>
            
+            <Route path="chat/:chatId/edit" element={ <EditChat /> } />
             </Route>
         
       </Routes>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
+
 export const EditChat = () => {
     const [chat, assignChat] = useState({
         userName: "",
@@ -10,9 +11,10 @@ export const EditChat = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:8088/ChatList/${chatId}`)
+        fetch(`http://localhost:8088/${chatId}`)
             .then(response => response.json())
             .then((data) => {
+                console.log(data)
                 assignChat(data)
             })
     }, [chatId])
@@ -20,7 +22,7 @@ export const EditChat = () => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        return fetch(`http://localhost:8088/ChatList/${chat.id}`, {
+        return fetch(`http://localhost:8088`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -29,7 +31,7 @@ export const EditChat = () => {
         })
             .then(response => response.json())
             .then(() => {
-                navigate("/chats")
+                navigate("chat")
             })
     }
 
