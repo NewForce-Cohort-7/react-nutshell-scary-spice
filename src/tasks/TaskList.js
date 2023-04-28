@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { TaskForm } from './TaskForm'
 import { EditTaskItem } from './EditTaskItem'
-import {Container, Row, Col,Button, Form} from 'react-bootstrap';
+import {Container, Row, Col,Button, Form, Stack} from 'react-bootstrap';
 import './Tasks.css'
 
 export const TaskList = () => {
@@ -84,6 +84,7 @@ export const TaskList = () => {
     )
   }
 
+
   return (
     <>
       
@@ -106,10 +107,18 @@ export const TaskList = () => {
         
                 <>
                 <EditTaskItem task={task} fetchAllTasks={fetchAllTasks} updateTask={updateTask} toggleAddTaskForm= {toggleAddTaskForm} /> {/* this is where we pass the updateTask function to EditTaskItem.js */}
-
+                
                 <div className="task-item" key={task.id}>
+                <Stack direction="horizontal" gap={2}>
                 <p className="task-field">{task.task}</p>
-                <h3 className="task-dueDate">{task.dueDate}</h3>
+                <span className="task-dueDate">{task.dueDate}</span>
+                
+                <Button
+                bsPrefix="task-delete-button"
+                variant="success"
+                onClick={() => handleDeleteTask(task.id)}> Delete
+                </Button>
+                </Stack>
 
                 <Form.Group className="task-form-group">
                 <Form.Check 
@@ -120,11 +129,7 @@ export const TaskList = () => {
                 />
                 </Form.Group>
 
-            <Button
-                bsPrefix="task-delete-button"
-                variant="success"
-                onClick={() => handleDeleteTask(task.id)}> Delete
-            </Button>
+            
             </div>
                 </>
         ))}
@@ -135,7 +140,61 @@ export const TaskList = () => {
       
     </>
   )
-}
+
+        }
+
+//   return (
+//     <>
+      
+//       {isFormVisible && <TaskForm taskSubmitted={taskSubmitted} toggleAddTaskForm= {toggleAddTaskForm} />}
+
+      
+
+//   <Container id="task"fluid="md">
+//       <Row>
+//         <Col className="task-list-field">
+//         <h1 className="task-heading">Tasks</h1>
+        
+//             <Button
+//                 bsPrefix="newtask-button"
+//                 variant="success"
+//                 onClick={toggleAddTaskForm}> New Task
+//             </Button>
+
+//         {filteredTasks.map(task => (
+        
+//                 <>
+//                 <EditTaskItem task={task} fetchAllTasks={fetchAllTasks} updateTask={updateTask} toggleAddTaskForm= {toggleAddTaskForm} /> {/* this is where we pass the updateTask function to EditTaskItem.js */}
+
+//                 <div className="task-item" key={task.id}>
+//                 <p className="task-field">{task.task}</p>
+//                 <h3 className="task-dueDate">{task.dueDate}</h3>
+
+//                 <Form.Group className="task-form-group">
+//                 <Form.Check 
+//                     type="checkbox" 
+//                     label="Mark task as complete"
+//                     checked={task.complete}
+//                    onChange={() => handleTaskCompletion(task.id)}
+//                 />
+//                 </Form.Group>
+
+//             <Button
+//                 bsPrefix="task-delete-button"
+//                 variant="success"
+//                 onClick={() => handleDeleteTask(task.id)}> Delete
+//             </Button>
+//             </div>
+//                 </>
+//         ))}
+
+//         </Col>
+//       </Row>
+//     </Container>
+      
+//     </>
+//   )
+// }
 
 
 

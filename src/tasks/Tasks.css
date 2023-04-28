@@ -6,6 +6,10 @@
     margin-bottom: 80px;
 }
 
+.task-heading {
+text-align: center;
+   
+}
 
 .edit-task-button,.task-delete-button, .newtask-button, .save-task-button,.cancel-task-button {
     font-family: sans-serif;
@@ -17,6 +21,12 @@
     margin-bottom: 5px;
 }
 
+.newtask-button{
+    margin-bottom: 50px;
+    
+ 
+ 
+}
 .task-field{
     font-family: sans-serif; 
     font-size: large;
