@@ -1,0 +1,44 @@
+
+  .placeholderTitle {
+    color: #000;
+  }
+ 
+  .chat-form-show-all-buttons {
+    padding: auto;
+  }
+
+
+  .chat-delete-button {
+    font-family: var(--sans-serif);
+    background: var(--ruby);
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    width: 75px;
+    text-align: center;
+}
+
+.chat-date {
+    font-family: var(--sans-serif);
+    color: var(--darkgray);
+    margin-right: 10px;
+}
+/* container for all articles */
+.chat-container {
+    border: 2px solid var(--lightgray);
+    padding: 1em;
+    box-shadow: 0 4px 2px -2px var(--lightgray);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-family: var(--sans-serif) ;
+   
+}
+.chat-heading {
+    font-family: 'Lobster';
+    color: teal;
+    padding: 0px;
+    padding-bottom: 1px;
+    margin-bottom: 2px;
+    border-bottom: 4px solid rgb(32, 153, 141);
+    text-align: center;
+}

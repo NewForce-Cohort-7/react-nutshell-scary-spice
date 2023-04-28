@@ -5,8 +5,9 @@ import EditArticle from "./EditArticle"
 import './Articles.css'
 
 const Articles = () => {
-  const [articles, setArticles] = useState([])
-  const [showAddArticleForm, setShowAddArticleForm] = useState(false)
+  const [articles, setArticles] = useState([]) // state to hold all articles
+  const [filteredArticles, setFilteredArticles] = useState([]) // state to hold the filtered articles
+  const [showAddArticleForm, setShowAddArticleForm] = useState(false) // state to show the add article form
   
   // edit article
   const [showEditArticleForm, setShowEditArticleForm] = useState(false) // state to show the edit article form
@@ -34,19 +35,17 @@ const Articles = () => {
         }))
         // update state with new articles
         setArticles(updatedArticles)
+        setFilteredArticles(updatedArticles)
       })
   }
 
-  // filter articles by tag
-  const handleTagClick = (tag) => {
-    const filteredArticles = articles.filter((article) =>
-    // some() method checks if at least one element in the article.tags array
-    // matches the clicked tag, regardless of casing
-    // t = tag, t.toLowerCase() = tag clicked, article.tags = array of tags on the article
-        article.tags.some((t) => t.toLowerCase() === tag.toLowerCase()) 
+   // filter articles by tag
+   const handleTagClick = (tag) => {
+    const filtered = articles.filter((article) =>
+        article.tags.some((t) => t.toLowerCase() === tag.toLowerCase())
     )
-    setArticles(filteredArticles)
-}
+    setFilteredArticles(filtered)
+  }
 
 // add an article to the database 
   const handleSaveArticle = (article) => {
@@ -125,7 +124,7 @@ const Articles = () => {
 
   // show all articles upon clicking the 'show all articles' button
   const handleShowAllArticles = () => {
-    fetchArticles()
+   setFilteredArticles(articles)
   }
 
   // formats the date
@@ -140,7 +139,7 @@ const Articles = () => {
         <Col lg={{ span: 8, offset: 2 }} className="article-container">
           <h1 className="main-article-heading">Articles</h1>
           
-          {articles.map((article) => (
+          {filteredArticles.map((article) => (
            <div className="inner-article" key={article.id}>
            <div className="d-flex justify-content-between align-items-start">
              <div>
