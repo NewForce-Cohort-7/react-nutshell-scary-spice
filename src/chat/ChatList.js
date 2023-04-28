@@ -101,6 +101,8 @@ const fetchChats = () => {
     const date = new Date(dateString)
     return date.toLocaleDateString()
   }  
+
+ 
      return (
         <Container id="chat">
           <Row>

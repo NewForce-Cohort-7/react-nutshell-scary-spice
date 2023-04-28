@@ -19,6 +19,7 @@ export const EditTaskItem=({ task = {task: "", dueDate: ""}, fetchAllTasks, upda
     const handleCancelClick = () => {
       setIsEditing(false)
     }
+
     const handleSaveClick = (event) => {
       event.preventDefault()
 
@@ -84,9 +85,6 @@ return (
            </>
            ) : (
             <>
-        
-     <section>{task.task}</section>
-     <section>{task.dueDate}</section>
       
         <Button 
          variant="success" 
