@@ -8,7 +8,7 @@ export const Events = ({events}) => {
     const navigate = useNavigate()
     return (    
         <>
-            <ul class="agendaList">
+            <ul className="agendaList">
                 <li>{events.name}</li>
                 <li>{events.date}</li>
                 <li>{events.location}</li>

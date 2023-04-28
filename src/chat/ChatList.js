@@ -67,6 +67,7 @@ const fetchChats = () => {
 
   // this is the PUT request to update an chat in the database 
         const handleUpdateChat = (updatedChat) => {
+          const chatId = updatedChat.id
             const newMessage = {
             userId: nutshellUserObject.id,
             userName: updatedChat.userName,
@@ -76,7 +77,7 @@ const fetchChats = () => {
 
     
 
-    fetch(`http://localhost:8088/chat?userId=${userId}`, {
+    fetch(`http://localhost:8088/chat/${chatId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -100,6 +101,7 @@ const fetchChats = () => {
     setEditChatForm(true)
   }
   const closeEditChat   = () => {
+    setChatEdit(null)
     setEditChatForm(false)
   }
 
@@ -160,7 +162,7 @@ const fetchChats = () => {
                             // show={editChatForm}
                             handleCloseEditChat={closeEditChat}
                             handleUpdatedChat={handleUpdateChat}
-                            chat={chatEdit}
+                            chat={chatEdit.id}
                             />
                         )}    
                 

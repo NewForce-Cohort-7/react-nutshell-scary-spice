@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 
-export const EditChat = () => {
+export const EditChat = ( { handleUpdatedChat }) => {
     const [chat, assignChat] = useState({
         userName: "",
         message: ""
     })
     const { chatId } = useParams()
-    const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:8088/${chatId}`)
+        fetch(`http://localhost:8088/chat/${chatId}`)
             .then(response => response.json())
             .then((data) => {
-                console.log(data)
                 assignChat(data)
             })
     }, [chatId])
@@ -22,7 +20,7 @@ export const EditChat = () => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        return fetch(`http://localhost:8088`, {
+        return fetch(`http://localhost:8088/chat/${chat.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -31,8 +29,16 @@ export const EditChat = () => {
         })
             .then(response => response.json())
             .then(() => {
-                navigate("chat")
+                handleUpdatedChat(chat)
+                resetForm()
             })
+    }
+
+    const resetForm = () => {
+        assignChat({
+            userName: "",
+            message: ""
+        })
     }
 
 
@@ -52,7 +58,7 @@ export const EditChat = () => {
                     onChange={
                         (evt) => {
                             const copy = { ...chat }
-                            copy.description = evt.target.value
+                            copy.message = evt.target.value
                             assignChat(copy)
                         }
                     }>{chat.message}</textarea> 
