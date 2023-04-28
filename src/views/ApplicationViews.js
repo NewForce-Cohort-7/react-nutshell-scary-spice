@@ -3,7 +3,9 @@ import { Login } from "../auth/Login"
 import { TaskList } from "../tasks/TaskList"
 import { ChatList } from "../chat/ChatList"
 import Articles from "../articles/Articles"
+import { EventContainer } from "../Events/EventContainer"
 import Images from "../images/Images"
+import { EventEdit } from "../Events/EventEdit"
 
 
 export const ApplicationViews = () => {
@@ -17,16 +19,19 @@ export const ApplicationViews = () => {
         <Route path="/" element={
             <>
               <TaskList/>
+
+             <EventContainer/>
+             
               <ChatList />
               <Articles />
               <Images />
               <Outlet />
             </>
-          }>
-           
-            </Route>
-        
+          }
+        />
+         <Route exact path="events/:eventId/edit" element={ < EventEdit/> } /> 
       </Routes>
+
     )
   } else {
     return (
