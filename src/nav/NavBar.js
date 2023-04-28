@@ -16,7 +16,7 @@ const NavBar = () => {
                 <Nav className="ms-auto">
                     <Nav.Link href="#events" bsPrefix="nav-link-custom">Events</Nav.Link>
                     <Nav.Link href="#tasks" bsPrefix="nav-link-custom">Tasks</Nav.Link>
-                    <Nav.Link href="#chat" bsPrefix="nav-link-custom">Chat</Nav.Link>
+                    <Nav.Link as={Link} bsPrefix="nav-link-custom" to="chat" offset={-100}>Chat</Nav.Link>
                     <Nav.Link as={Link} bsPrefix="nav-link-custom" to="articles" offset={-100}>Articles</Nav.Link>
                     <Nav.Link as={Link} bsPrefix="nav-link-custom" to="images" offset={-100}>Images</Nav.Link>
                     
