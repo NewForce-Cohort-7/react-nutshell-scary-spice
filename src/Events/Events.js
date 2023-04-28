@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { Container} from "react-bootstrap"
 
 
 
@@ -14,8 +15,8 @@ export const Events = ({events}) => {
             
             </ul>
             <button className= "editButton" onClick={() => navigate(`events/${events.id}/edit`)}>Edit Event</button>
-        </>
-    
+       
+            </>
     )
    
     
