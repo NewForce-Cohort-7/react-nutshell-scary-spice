@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { TaskForm } from './TaskForm'
 import { EditTaskItem } from './EditTaskItem'
 import {Container, Row, Col,Button, Form} from 'react-bootstrap';
+import './Tasks.css'
 
 export const TaskList = () => {
   const [tasks, setTasks] = useState([])
@@ -94,14 +95,20 @@ export const TaskList = () => {
       <Row>
         <Col className="task-list-field">
         <h1 className="task-heading">Tasks</h1>
-        <button onClick={toggleAddTaskForm}>New Task</button>
+        
+            <Button
+                bsPrefix="newtask-button"
+                variant="success"
+                onClick={toggleAddTaskForm}> New Task
+            </Button>
+
         {filteredTasks.map(task => (
         
                 <>
                 <EditTaskItem task={task} fetchAllTasks={fetchAllTasks} updateTask={updateTask} toggleAddTaskForm= {toggleAddTaskForm} /> {/* this is where we pass the updateTask function to EditTaskItem.js */}
 
                 <div className="task-item" key={task.id}>
-                <p className="task-item">{task.task}</p>
+                <p className="task-field">{task.task}</p>
                 <h3 className="task-dueDate">{task.dueDate}</h3>
 
                 <Form.Group className="task-form-group">
@@ -114,7 +121,7 @@ export const TaskList = () => {
                 </Form.Group>
 
             <Button
-                bsPrefix="task -delete-button"
+                bsPrefix="task-delete-button"
                 variant="success"
                 onClick={() => handleDeleteTask(task.id)}> Delete
             </Button>

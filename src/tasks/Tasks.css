@@ -1,0 +1,30 @@
+.task-list-field {
+    border: 1px solid rgb(19, 147, 110);
+    padding: 10;
+    box-shadow: 0 4px 2px -2px rgb(19, 147, 110);
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+
+.edit-task-button,.task-delete-button, .newtask-button, .save-task-button,.cancel-task-button {
+    font-family: sans-serif;
+    background: #3eb1a5;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.task-field{
+    font-family: sans-serif; 
+    font-size: large;
+}
+
+.task-dueDate{
+    font-family: sans-serif;
+    font-size: large; 
+}
+
+
