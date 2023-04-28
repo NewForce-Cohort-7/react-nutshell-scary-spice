@@ -100,7 +100,7 @@ export const EventForm = ({updateEvent}) => {
                 </div>
             </fieldset>
             <button 
-            className="btn btn-primary">
+            className="btn-submit">
                 Submit event
             </button>
         </form>

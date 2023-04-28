@@ -22,7 +22,7 @@ export const EventEdit = () => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 //Put request to replace OBJ being edited. 
-        return fetch(`http://localhost:8088/events/${events.id}`, {
+        return fetch(`http://localhost:8088/events/${event.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -36,7 +36,7 @@ export const EventEdit = () => {
     }
 
 
-    return <form className="eventForm">
+    return <><form className="eventForm">
         <h2 className="eventForm__title">Events</h2>
         <fieldset>
             <div className="form-group">
@@ -80,11 +80,12 @@ export const EventEdit = () => {
                             copy.location = evt.target.value
                             assignEvent(copy)
                         }
-                    } />
+                    } /></div>
         <button
             onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-            className="btn btn-primary">
+            className="btn-edit">
             Save Edits
         </button>
     </form>
+    </>
 }

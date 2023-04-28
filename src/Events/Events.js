@@ -1,4 +1,10 @@
+import { useNavigate } from "react-router-dom"
+
+
+
+
 export const Events = ({events}) => {
+    const navigate = useNavigate()
     return (    
         <>
             <ul class="agendaList">
@@ -7,10 +13,11 @@ export const Events = ({events}) => {
                 <li>{events.location}</li>
             
             </ul>
+            <button className= "editButton" onClick={() => navigate(`events/${events.id}/edit`)}>Edit Event</button>
         </>
     
     )
-    
+   
     
     }
  

@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300#019587;1,400;1,600;1,700&display=swap');
+
+
+.btn-submit {
+    font-family: var(--sans-serif);
+    background: #019587;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.editButton {
+    font-family: var(--sans-serif);
+    background: #019587;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
 .agendaList:first-of-type > li:first-child{    
     width: 50%;    
     background-color: teal;    
