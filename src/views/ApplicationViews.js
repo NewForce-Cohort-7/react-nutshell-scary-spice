@@ -5,6 +5,7 @@ import { ChatList } from "../chat/ChatList"
 import Articles from "../articles/Articles"
 import { EventContainer } from "../Events/EventContainer"
 import Images from "../images/Images"
+import { EditChat } from "../chat/EditChat"
 import { EventEdit } from "../Events/EventEdit"
 
 
@@ -23,12 +24,18 @@ export const ApplicationViews = () => {
              <EventContainer/>
              
               <ChatList />
+            
               <Articles />
               <Images />
               <Outlet />
             </>
-          }
-        />
+          }>
+           
+            <Route path="chat/:chatId/edit" element={ <EditChat /> } />
+            </Route>
+        
+          
+        
          <Route exact path="events/:eventId/edit" element={ < EventEdit/> } /> 
       </Routes>
 

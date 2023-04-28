@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react"
 import "./Chat.css"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import { ChatForm } from "./ChatForm"
+import { EditChat } from "./EditChat"
 
 
 export const ChatList = () => {
     const [chat, setChats] = useState([])
     const [showChatFormForm, setShowChatFormForm] = useState(false)
+    const [ editChatForm, setEditChatForm ] = useState(false)
+    const [ chatEdit, setChatEdit ] = useState(null)
 
     const localNutshellUser = localStorage.getItem("nutshell_user")
     const nutshellUserObject = JSON.parse(localNutshellUser)
@@ -40,7 +43,7 @@ const fetchChats = () => {
     }
 
     // Save the chat(sendChat)
-    fetch("http://localhost:8088/chat", {
+    fetch(`http://localhost:8088/chat?userId=${userId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +76,7 @@ const fetchChats = () => {
 
     
 
-    fetch(`http://localhost:8088/chat/${updatedChat.id}`, {
+    fetch(`http://localhost:8088/chat?userId=${userId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -91,9 +94,13 @@ const fetchChats = () => {
     setShowChatFormForm(!showChatFormForm)
   }
 
-  // show all chats upon clicking the 'show all chats' button
-  const handleShowAllChats = () => {
-    fetchChats()
+ 
+  const openChatEdit = (chat) => {
+    setChatEdit(chat)
+    setEditChatForm(true)
+  }
+  const closeEditChat   = () => {
+    setEditChatForm(false)
   }
 
   // formats the date
@@ -119,7 +126,15 @@ const fetchChats = () => {
                         
                         <p className="chat-message">{chat.message}</p>
                         </div>
-                         
+                        <div className="edit-delete-chat-buttons">
+                        <Button
+                            bsPrefix="edit-chat-button"
+                            variant="warning"
+                            onClick={() => openChatEdit(chat)}
+                         >
+                            Edit
+                         </Button>
+                        
                         <Button
                             bsPrefix="chat-delete-button"
                             variant="danger"
@@ -127,7 +142,7 @@ const fetchChats = () => {
                         >
                             Delete
                         </Button>
-
+                        </div>
                         </div>
                        </div>
                ))}
@@ -141,8 +156,15 @@ const fetchChats = () => {
                         <ChatForm handleSendChat={handleSendChat}
                         toggleChatFormForm={toggleChatFormForm}
                 />
-            )} 
-                    
+                )} 
+                          {editChatForm && (
+                            <EditChat
+                            // show={editChatForm}
+                            handleCloseEditChat={closeEditChat}
+                            handleUpdatedChat={handleUpdateChat}
+                            chat={chatEdit}
+                            />
+                        )}    
                 
                
             </div>
@@ -151,4 +173,3 @@ const fetchChats = () => {
         </Row>
         </Container>
     )}
- 
