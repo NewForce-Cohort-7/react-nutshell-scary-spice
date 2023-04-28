@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import {Button, Form} from 'react-bootstrap'
 
 export const EditTaskItem=({ task = {task: "", dueDate: ""}, fetchAllTasks, updateTask })=>{
     const [isEditing, setIsEditing] = useState(false)
@@ -41,123 +42,62 @@ export const EditTaskItem=({ task = {task: "", dueDate: ""}, fetchAllTasks, upda
         })
     }
 
-    return (
-      <div>
-        {isEditing ? (
-          <div>
-            <input
-              type="text"
-              value={editTask}
-              onChange={(event) => setEditTask(event.target.value)}
-            />
-            <input
-              type="date"
-              value={editDueDate}
-              onChange={(event) => setEditDueDate(event.target.value)}
-            />
-            <button onClick={handleSaveClick}>Save</button>
-            <button onClick={handleCancelClick}>Cancel</button>
-          </div>
-        ) : (
-          <div>
-            <section>{task.task}</section>
-            <section>{task.dueDate}</section>
-            <button onClick={handleEditClick}>Edit</button>
-          </div>
-        )}
-      </div>
-    )
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState, useEffect } from 'react';
-
-
-// export const EditTaskItem=({ task })=>{
-//     const [isEditing, setIsEditing] = useState(false);
-//     const [editTask, setEditTask] = useState(task.task);
-//     const [editDueDate, setEditDueDate] = useState(task.dueDate);
-  
-//     const handleEditClick = () => {
-//       setIsEditing(true);
-//     };
-  
-//     const handleCancelClick = () => {
-//       setIsEditing(false);
-//     };
-  
-   
-//     const handleSaveClick = (event ) => {
-//       // save the edited task and due date to your database 
-
-//       //need a fetch function to send a PUT request api/tasks/taskId= specify Id of the task to be updated...get id from task prop along with {id, task, dueDate, complete}
-//       event.preventDefault()
-
-//       const updatedTaskData={
-//         task:editTask,
-//         dueDate:editDueDate
-//     }
-
-//     fetch(`http://localhost:8088/tasks/${task.id}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(updatedTaskData)
-//     });
+return (  
     
-//     //   fetchAllTasks()
-//       setIsEditing(false);
-//     }
-   
-  
-//     return (
-//       <div>
-//         {isEditing ? (
-//           <div>
-//             <input
-//               type="text"
-//               value={editTask}
-//               onChange={(event) => setEditTask(event.target.value)}
-//             />
-//             <input
-//               type="date"
-//               value={editDueDate}
-//               onChange={(event) => setEditDueDate(event.target.value)}
-//             />
-//             <button onClick={handleSaveClick}>Save</button>
-//             <button onClick={handleCancelClick}>Cancel</button>
-//           </div>
-//         ) : (
-//           <div>
-//             <section>{task.task}</section>
-//             <section>{task.dueDate}</section>
-//             <button onClick={handleEditClick}>Edit</button>
-//           </div>
-//         )}
-//       </div>
-//     );
-//   }
+    <Form> 
+        
+        {isEditing ? ( <> 
+           <Form.Group className="task-form-group">
+               <Form.Label className="task-form-label">Task:</Form.Label>
+               <Form.Control
+                   type="text"
+                   required
+                   value={editTask}
+                   onChange={(event) => setEditTask(event.target.value)}
+                   placeholder="Enter new task"
+               />
+            </Form.Group>
+
+               <Form.Group className="task-form-group">
+               <Form.Label className="task-form-label">Due Date:</Form.Label>
+               <Form.Control
+               type="date"
+               required
+               value={editDueDate}
+               onChange={(event) => setEditDueDate(event.target.value)}
+               placeholder="Select due date"
+           />
+             </Form.Group>
+           <Button 
+           variant="success" 
+           bsPrefix="save-task-button"
+           onClick={handleSaveClick}>
+           Save
+           </Button>
+
+           <Button 
+           variant="success" 
+           bsPrefix="cancel-task-button"
+           onClick={handleCancelClick}>
+           Cancel
+           </Button>
+           </>
+           ) : (
+            <>
+        
+     <section>{task.task}</section>
+     <section>{task.dueDate}</section>
+      
+        <Button 
+         variant="success" 
+         bsPrefix="edit-task-button"
+         onClick={handleEditClick}>
+         Edit
+         </Button>
+           
+         </>
+       
+            )
+           }
+           </Form>
+)}
