@@ -110,8 +110,8 @@ const Images = () => {
                 </Button>
                 <Button
                   bsPrefix="add-image-button"
-                  className="ms-2" // Add a margin to the right of the button
-                  onClick={() => setFilteredImages(null)} // Set filteredImages back to null
+                  className="ms-2" 
+                  onClick={() => setFilteredImages(null)} 
                   >
                     Show All Images
                 </Button>
