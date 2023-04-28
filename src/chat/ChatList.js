@@ -66,7 +66,7 @@ const fetchChats = () => {
   }
 
   // this is the PUT request to update an chat in the database 
-        const handleUpdateChat = (updatedChat) => {
+     const handleUpdateChat = (updatedChat) => {
           const chatId = updatedChat.id
             const newMessage = {
             userId: nutshellUserObject.id,
@@ -101,8 +101,8 @@ const fetchChats = () => {
     setEditChatForm(true)
   }
   const closeEditChat   = () => {
-    setChatEdit(null)
-    setEditChatForm(false)
+    setChatEdit(null) 
+    setEditChatForm(false) 
   }
 
   // formats the date
@@ -162,7 +162,8 @@ const fetchChats = () => {
                             // show={editChatForm}
                             handleCloseEditChat={closeEditChat}
                             handleUpdatedChat={handleUpdateChat}
-                            chat={chatEdit.id}
+                            chat={chatEdit}
+                            chatId={chatEdit.id}
                             />
                         )}    
                 

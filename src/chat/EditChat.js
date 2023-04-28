@@ -2,12 +2,12 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 
-export const EditChat = ( { handleUpdatedChat }) => {
+export const EditChat = ( { handleUpdatedChat, chatId }) => {
     const [chat, assignChat] = useState({
         userName: "",
         message: ""
     })
-    const { chatId } = useParams()
+ 
 
     useEffect(() => {
         fetch(`http://localhost:8088/chat/${chatId}`)
