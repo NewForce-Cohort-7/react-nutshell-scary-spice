@@ -9,7 +9,7 @@ export const EventList = ({events}) => {
 
         <Container className="events_list">
             <Row>
-            <Col lg={{span:8, offset:2}} class name="agenda_container"></Col> <h1 className="event_header">Events</h1>
+            <Col lg={{span:8, offset:2}} className="agenda_container"></Col> <h1 className="event_header">Events</h1>
             <div className="eventList">
                 {
                 events.map(event => <Events key={event.id}  events={event}  />)
