@@ -8,23 +8,26 @@ import { Register } from "./auth/Register"
 import { Authorized } from './views/Authorized'
 
 
+
 const Nutshell= () => {
   return <Router>
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-      <Route path="*" element={
-        <Authorized>
-          <>
-            <NavBar />
+        <Route path="*" element={
+          <Authorized>
+            <>
+              <NavBar />
               <div className="content-container">
-                <ApplicationViews /> 
+                    <div className="content-container">
+                <ApplicationViews />  
               </div>
+                </div>
           </>
-        </Authorized>
-      } />
-    </Routes>
+          </Authorized>
+        } />
+      </Routes>
   </Router>
 }
 

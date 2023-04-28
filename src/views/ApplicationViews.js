@@ -1,5 +1,6 @@
 import { Outlet, Route, Routes, Link } from "react-router-dom"
 import { Login } from "../auth/Login"
+import { TaskList } from "../tasks/TaskList"
 import { ChatList } from "../chat/ChatList"
 import Articles from "../articles/Articles"
 import { EventContainer } from "../Events/EventContainer"
@@ -15,10 +16,9 @@ export const ApplicationViews = () => {
   if (nutshellUserObject) {
     return (
       <Routes>
-        <Route
-          path="/"
-          element={
+        <Route path="/" element={
             <>
+              <TaskList/>
 
              <EventContainer/>
              
