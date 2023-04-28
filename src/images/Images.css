@@ -81,3 +81,14 @@
     border-top: 1px solid var(--lightgray);
     margin-top: 20px;
 }
+
+.images-tag-button {
+    font-family: var(--sans-serif);
+    background: var(--teal);
+    border: none;
+    color: #fff;
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 50px;
+    margin-left: 5px;
+}

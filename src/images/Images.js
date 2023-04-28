@@ -13,6 +13,8 @@ const Images = () => {
   const [showAddImageForm, setShowAddImageForm] = useState(false)
   const [url, setUrl] = useState("")
   const [caption, setCaption] = useState("")
+  const [tags, setTags] = useState("")
+  const [filteredImages, setFilteredImages] = useState(null)  
 
   // fetch images from database
   useEffect(() => {
@@ -23,7 +25,7 @@ const Images = () => {
 
   // add an image to the database
   const handleSaveImage = () => {
-    const newImage = { userId, url, caption }
+    const newImage = { userId, url, caption, tags: tags.split(",").map(tag => tag.trim()) }
     fetch("http://localhost:8088/images", {
       method: "POST",
       headers: {
@@ -56,6 +58,13 @@ const Images = () => {
     setShowAddImageForm(!showAddImageForm)
   }
 
+  // filter images by tag
+  const filterImagesByTag = (tag) => {
+    setFilteredImages(images.filter((image) => image.tags && image.tags.includes(tag))) // if the image has tags and the tag array includes the tag, return the image
+  }
+
+  const displayImages = filteredImages || images // if filteredImages is null, display all images
+
   return (
     
     <Container id="images">
@@ -63,18 +72,31 @@ const Images = () => {
         <Col className="images-container" lg={{ span: 8, offset: 2 }} >
             <h1 className="main-images-heading">Images</h1>
             <Row className="inner-image-container">
-            {images.map((image) => (
+            {displayImages.map((image) => (
               <Col key={image.id} xs={6} sm={6} lg={4} className="mb-4">
                 <Card style={{ width: "100%" }} className="no-round">
                   <Card.Img variant="top" src={image.url} />
                   <Card.Body className="mx-auto">
                     <Card.Title className="text-center">{image.caption}</Card.Title>
+                    <div className="tags-container d-flex mx-auto justify-content-center">
+                      {image.tags && image.tags.map((tag, index) => (
+                        <span key={index}>
+                        <Button
+                          bsPrefix="images-tag-button"
+                          onClick={() => filterImagesByTag(tag)}
+                        > #{tag}
+                        </Button>
+                      </span>
+                      ))}
+                    </div>
+                    <div className="d-flex mx-auto justify-content-center">
                     <Button
                       bsPrefix="delete-image-button"
                       onClick={() => handleDeleteImage(image.id)}
                     >
                       Delete
                     </Button>
+                    </div>
                   </Card.Body>
                 </Card>
               </Col>
@@ -85,6 +107,13 @@ const Images = () => {
                 bsPrefix="add-image-button"
                 onClick={toggleAddImageForm}>
                     Add Image
+                </Button>
+                <Button
+                  bsPrefix="add-image-button"
+                  className="ms-2" // Add a margin to the right of the button
+                  onClick={() => setFilteredImages(null)} // Set filteredImages back to null
+                  >
+                    Show All Images
                 </Button>
             </div>
         {showAddImageForm && (
@@ -98,6 +127,15 @@ const Images = () => {
                 placeholder="Enter image URL"
                 value={url}
                 onChange={(event) => setUrl(event.target.value)}
+              />
+            </Form.Group>
+            <Form.Group className="image-form-group">
+              <Form.Label bsPrefix="image-form-label">Tags</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter tags (comma separated)"
+                value={tags}
+                onChange={(event) => setTags(event.target.value)}
               />
             </Form.Group>
             <Form.Group 
