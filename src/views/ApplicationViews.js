@@ -2,8 +2,11 @@ import { Outlet, Route, Routes, Link } from "react-router-dom"
 import { Login } from "../auth/Login"
 import { ChatList } from "../chat/ChatList"
 import Articles from "../articles/Articles"
+import { EventContainer } from "../Events/EventContainer"
 import Images from "../images/Images"
 import { EditChat } from "../chat/EditChat"
+import { EventEdit } from "../Events/EventEdit"
+
 
 export const ApplicationViews = () => {
   // Retrieving the user object from local storage
@@ -17,6 +20,9 @@ export const ApplicationViews = () => {
           path="/"
           element={
             <>
+
+             <EventContainer/>
+             
               <ChatList />
             
               <Articles />
@@ -28,7 +34,11 @@ export const ApplicationViews = () => {
             <Route path="chat/:chatId/edit" element={ <EditChat /> } />
             </Route>
         
+          
+        
+         <Route exact path="events/:eventId/edit" element={ < EventEdit/> } /> 
       </Routes>
+
     )
   } else {
     return (
