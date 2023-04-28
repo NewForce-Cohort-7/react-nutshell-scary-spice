@@ -7,16 +7,6 @@
   </Form.Text>
 </Form.Group> */
 
-{filteredTasks.map(task => (
-    <div key={task.id}>
-      <EditTaskItem task={task} fetchAllTasks={fetchAllTasks} updateTask={updateTask} toggleAddTaskForm= {toggleAddTaskForm} />
-
-return (
-  
-
-
-)
-
 
 //older code TaskList w/out bootstrap</Container>
 
